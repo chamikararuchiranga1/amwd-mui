@@ -21,6 +21,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import { Navigate, Route, Routes, Link } from 'react-router-dom'
 import Home from '../Home/Home';
 import About from '../About/About';
+import AxiosPage from '../AxiosPage/AxiosPage';
 
 const drawerWidth = 240;
 
@@ -175,6 +176,28 @@ export default function Drower() {
               </ListItemButton>
             </ListItem>
           </Link>
+          <Link to={'/axios'} style={{textDecoration: 'none'}}>
+            <ListItem key={'Axios'} disablePadding sx={{ display: 'block' }}>
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <InboxIcon />
+                </ListItemIcon>
+                <ListItemText primary={'Axios'} sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
@@ -184,6 +207,7 @@ export default function Drower() {
             <Route path='*' element={<Navigate to={'/home'} />}></Route>
             <Route path='/home' element={<Home />}></Route>
             <Route path='/about' element={<About />}></Route>
+            <Route path='/axios' element={<AxiosPage />}></Route>
           </Routes>
         </Box>
       </Box>
