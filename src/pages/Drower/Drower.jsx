@@ -22,6 +22,7 @@ import { Navigate, Route, Routes, Link } from 'react-router-dom'
 import Home from '../Home/Home';
 import About from '../About/About';
 import AxiosPage from '../AxiosPage/AxiosPage';
+import { Button } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -102,6 +103,11 @@ export default function Drower() {
     setOpen(false);
   };
 
+  const onLogout = () => {
+    localStorage.removeItem('stu-login');
+    window.location.reload()
+  }
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -122,6 +128,7 @@ export default function Drower() {
           <Typography variant="h6" noWrap component="div">
             My App
           </Typography>
+          <Button sx={{backgroundColor: 'red'}} onClick={()=> onLogout()}>Logout</Button>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -9,6 +9,18 @@ import { Route, Routes, Navigate } from 'react-router-dom'
 
 
 function App() {
+
+  const [auth, setAuth] = useState(false)
+
+  useEffect(() => {
+    const token = localStorage.getItem('stu-login');
+    if (token) {
+      setAuth(true)
+    } else {
+      setAuth(false)
+    }
+
+  }, [])
 
   const Auth = () => {
     return (
@@ -21,8 +33,11 @@ function App() {
 
   return (
     <div>
-      {/* <Auth/> */}
-      <Drower/>
+      {auth ?
+        <Drower />
+        :
+        <Auth />
+      }
     </div>
   )
 }
