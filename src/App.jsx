@@ -4,14 +4,24 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Drower from './pages/Drower/Drower'
 import Home from './pages/Home/Home'
-import About from './pages/About/About'
+import Login from './pages/Login/Login'
+import { Route, Routes, Navigate } from 'react-router-dom'
 
 
 function App() {
 
+  const Auth = () => {
+    return (
+      <Routes>
+        <Route path='*' element={<Navigate to={'/login'} />}></Route>
+        <Route path='/login' element={<Login />}></Route>
+      </Routes>
+    )
+  }
+
   return (
     <div>
-      {/* <About/> */}
+      {/* <Auth/> */}
       <Drower/>
     </div>
   )
